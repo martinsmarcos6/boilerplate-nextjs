@@ -28,6 +28,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.34.2",
     "react-icons": "^4.4.0",
+    "recharts": "^2.1.15",
     "styled-jsx-plugin-postcss": "^4.0.1",
     "yup": "^0.32.11"
   },

@@ -1,12 +1,16 @@
 import React from 'react';
 
+import DashboardChart from '../components/charts/auc-total';
 import { withSSRGuest } from '../guards/withSSRGuest';
 import ModuleWrapper from '../layouts/ModuleWrapper';
 
 const Index = () => {
   return (
     <ModuleWrapper>
-      <span>oi eu me chamo raffy</span>
+      <main className="grid grid-cols-2 grid-rows-2 gap-5 pb-8">
+        <DashboardChart />
+        <DashboardChart />
+      </main>
     </ModuleWrapper>
   );
 };
