@@ -1,15 +1,13 @@
 import React from 'react';
 
-import Header from '../components/Header';
-import SideMenu from '../components/SideMenu';
 import { withSSRGuest } from '../guards/withSSRGuest';
+import ModuleWrapper from '../layouts/ModuleWrapper';
 
 const Index = () => {
   return (
-    <>
-      <Header />
-      <SideMenu />
-    </>
+    <ModuleWrapper>
+      <span>oi eu me chamo raffy</span>
+    </ModuleWrapper>
   );
 };
 
