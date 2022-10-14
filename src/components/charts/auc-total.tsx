@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { IoIosResize } from 'react-icons/io';
 import {
@@ -14,44 +14,6 @@ import {
   ValueType,
   NameType,
 } from 'recharts/src/component/DefaultTooltipContent';
-
-const data = [
-  {
-    name: 'JUN',
-    auc: 3500000,
-    clientes: 12,
-  },
-  {
-    name: 'JUL',
-    auc: 3700000,
-    clientes: 14,
-  },
-  {
-    name: 'AGO',
-    auc: 3700000,
-    clientes: 20,
-  },
-  {
-    name: 'SET',
-    auc: 3900000,
-    clientes: 22,
-  },
-  {
-    name: 'OUT',
-    auc: 4000000,
-    clientes: 24,
-  },
-  {
-    name: 'NOV',
-    auc: 4100000,
-    clientes: 27,
-  },
-  {
-    name: 'DEZ',
-    auc: 4300000,
-    clientes: 30,
-  },
-];
 
 const CustomizedDot = () => {
   return null;
@@ -77,12 +39,34 @@ const CustomToolTip = ({
   return null;
 };
 
-const DashboardChart = () => {
+interface ChartProps {
+  data: any[];
+  leftName: string;
+  rightName: string;
+  expansive?: boolean;
+}
+
+const DashboardChart = ({
+  data,
+  leftName,
+  rightName,
+  expansive = false,
+}: ChartProps) => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const itemsX: any = [];
   data.map((item) => itemsX.push(item.name));
   return (
-    <div className="bg-neutral h-max rounded-md py-7 pr-10 flex flex-col relative">
-      <IoIosResize className="text-secondary-text text-2xl absolute right-2 top-2 cursor-pointer" />
+    <div
+      className={`bg-neutral h-max rounded-md py-7 pr-10 flex flex-col transition-all duration-300 ${
+        isFullscreen ? 'fixed top-0 w-full h-full left-0 z-50' : 'relative'
+      }`}
+    >
+      {expansive && (
+        <IoIosResize
+          className="text-secondary-text text-2xl absolute right-2 top-2 cursor-pointer"
+          onClick={() => setIsFullscreen(!isFullscreen)}
+        />
+      )}
       <div className="flex justify-between pl-10 mb-8">
         <div className="flex flex-col">
           <span className="text-primary-text text-3xl font-semibold">
@@ -92,7 +76,7 @@ const DashboardChart = () => {
             })}
           </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
-            AUC total
+            {leftName}
           </span>
         </div>
         <div className="flex flex-col items-end">
@@ -100,11 +84,11 @@ const DashboardChart = () => {
             {data[data.length - 1].clientes}
           </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
-            Clientes
+            {rightName}
           </span>
         </div>
       </div>
-      <div className="h-52">
+      <div className={`${isFullscreen ? 'h-full' : 'h-52'}`}>
         <ResponsiveContainer className="w-full h-full">
           <LineChart
             width={500}
