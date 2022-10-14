@@ -112,6 +112,7 @@ const DashboardChart = () => {
               type="linear"
               dataKey="clientes"
               stroke="#D2A877"
+              strokeWidth={2}
               dot={<CustomizedDot />}
               activeDot={{ r: 4, strokeWidth: 0 }}
             />
@@ -119,6 +120,7 @@ const DashboardChart = () => {
               type="linear"
               dataKey="uv"
               stroke="#ffffff"
+              strokeWidth={2}
               dot={<CustomizedDot />}
               activeDot={{ r: 4, strokeWidth: 0 }}
             />
