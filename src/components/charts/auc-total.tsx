@@ -1,7 +1,14 @@
 import React from 'react';
 
 import { IoIosResize } from 'react-icons/io';
-import { LineChart, Line, Tooltip, XAxis, TooltipProps } from 'recharts';
+import {
+  LineChart,
+  Line,
+  Tooltip,
+  XAxis,
+  TooltipProps,
+  ResponsiveContainer,
+} from 'recharts';
 import {
   ValueType,
   NameType,
@@ -86,34 +93,38 @@ const DashboardChart = () => {
           </span>
         </div>
       </div>
-      <LineChart
-        width={500}
-        height={150}
-        data={data}
-        margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
-      >
-        <XAxis
-          dataKey="name"
-          axisLine={false}
-          tickLine={false}
-          ticks={itemsX.splice(1)}
-        />
-        <Tooltip content={<CustomToolTip />} />
-        <Line
-          type="linear"
-          dataKey="clientes"
-          stroke="#D2A877"
-          dot={<CustomizedDot />}
-          activeDot={{ r: 4, strokeWidth: 0 }}
-        />
-        <Line
-          type="linear"
-          dataKey="uv"
-          stroke="#ffffff"
-          dot={<CustomizedDot />}
-          activeDot={{ r: 4, strokeWidth: 0 }}
-        />
-      </LineChart>
+      <div className="h-52">
+        <ResponsiveContainer className="w-full h-full">
+          <LineChart
+            width={500}
+            height={150}
+            data={data}
+            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
+          >
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tickLine={false}
+              ticks={itemsX.splice(1)}
+            />
+            <Tooltip content={<CustomToolTip />} />
+            <Line
+              type="linear"
+              dataKey="clientes"
+              stroke="#D2A877"
+              dot={<CustomizedDot />}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+            />
+            <Line
+              type="linear"
+              dataKey="uv"
+              stroke="#ffffff"
+              dot={<CustomizedDot />}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

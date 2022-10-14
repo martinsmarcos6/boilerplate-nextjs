@@ -9,7 +9,7 @@ import ModuleWrapper from '../layouts/ModuleWrapper';
 const Index = () => {
   return (
     <ModuleWrapper>
-      <main className="grid grid-cols-2 grid-rows-1 gap-5 pb-24">
+      <main className="grid grid-cols-2 grid-rows-1 gap-5 pb-24 w-full">
         <DashboardChart />
         <DashboardChart />
         <CustomersOverview />
