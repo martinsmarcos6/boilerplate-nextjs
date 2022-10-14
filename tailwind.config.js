@@ -16,12 +16,20 @@ module.exports = {
     },
     extend: {
       colors: {
-        gray: {
-          A: '#1B1B1B',
-        },
+        primary: '#D2A877',
+        'primary-text': '#FFFFFF',
+        'secondary-text': '#5E727A',
+        'tertiary-text': '#D9D9D9',
+        'base-bg': '#00202E',
+        neutral: '#022F43',
+        success: '#04A0A0',
+        error: '#A32655',
       },
     },
   },
+  daisyui: {
+    themes: false,
+  },
   variants: {},
-  plugins: [],
+  plugins: [require('daisyui')],
 };
