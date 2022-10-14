@@ -1,10 +1,16 @@
 import React from 'react';
 
 import Header from '../components/Header';
+import SideMenu from '../components/SideMenu';
 import { withSSRGuest } from '../guards/withSSRGuest';
 
 const Index = () => {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <SideMenu />
+    </>
+  );
 };
 
 export default Index;
