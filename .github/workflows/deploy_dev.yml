@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Development
-      url: https://yeee-nextjs-boilerplate
+      url: https://traad-frontend-dev.vercel.app
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
