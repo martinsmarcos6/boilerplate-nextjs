@@ -6,6 +6,7 @@ import {
   Line,
   Tooltip,
   XAxis,
+  YAxis,
   TooltipProps,
   ResponsiveContainer,
 } from 'recharts';
@@ -17,37 +18,37 @@ import {
 const data = [
   {
     name: 'JUN',
-    uv: 35,
+    auc: 3500000,
     clientes: 12,
   },
   {
     name: 'JUL',
-    uv: 37,
+    auc: 3700000,
     clientes: 14,
   },
   {
     name: 'AGO',
-    uv: 37,
+    auc: 3700000,
     clientes: 20,
   },
   {
     name: 'SET',
-    uv: 39,
+    auc: 3900000,
     clientes: 22,
   },
   {
     name: 'OUT',
-    uv: 40,
+    auc: 4000000,
     clientes: 24,
   },
   {
     name: 'NOV',
-    uv: 41,
+    auc: 4100000,
     clientes: 27,
   },
   {
     name: 'DEZ',
-    uv: 43,
+    auc: 4300000,
     clientes: 30,
   },
 ];
@@ -63,7 +64,12 @@ const CustomToolTip = ({
   if (active && payload && payload.length) {
     return (
       <div className="bg-white text-xs font-semibold flex flex-col py-1 px-2">
-        <span className="text-base-bg">R$ 148.640.700,88</span>
+        <span className="text-base-bg">
+          {payload[1].value?.toLocaleString('pt-BR', {
+            currency: 'BRL',
+            style: 'currency',
+          })}
+        </span>
         <span className="text-primary">{payload[0].value} clientes</span>
       </div>
     );
@@ -80,14 +86,19 @@ const DashboardChart = () => {
       <div className="flex justify-between pl-10 mb-8">
         <div className="flex flex-col">
           <span className="text-primary-text text-3xl font-semibold">
-            R$ 208.462.980,88
+            {data[data.length - 1].auc.toLocaleString('pt-BR', {
+              currency: 'BRL',
+              style: 'currency',
+            })}
           </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
             AUC total
           </span>
         </div>
         <div className="flex flex-col items-end">
-          <span className="text-primary text-3xl font-semibold">28</span>
+          <span className="text-primary text-3xl font-semibold">
+            {data[data.length - 1].clientes}
+          </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
             Clientes
           </span>
@@ -107,8 +118,18 @@ const DashboardChart = () => {
               tickLine={false}
               ticks={itemsX.splice(1)}
             />
-            <Tooltip content={<CustomToolTip />} />
+            <YAxis yAxisId="auac" hide />
+            <YAxis yAxisId="clients" hide />
+            <Tooltip
+              content={<CustomToolTip />}
+              cursor={{
+                strokeWidth: 1,
+                stroke: '#E5E5E5',
+                strokeDasharray: '3 3',
+              }}
+            />
             <Line
+              yAxisId="clients"
               type="linear"
               dataKey="clientes"
               stroke="#D2A877"
@@ -117,8 +138,9 @@ const DashboardChart = () => {
               activeDot={{ r: 4, strokeWidth: 0 }}
             />
             <Line
+              yAxisId="auac"
               type="linear"
-              dataKey="uv"
+              dataKey="auc"
               stroke="#ffffff"
               strokeWidth={2}
               dot={<CustomizedDot />}
