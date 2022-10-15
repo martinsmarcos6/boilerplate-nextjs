@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { FiMinimize2 } from 'react-icons/fi';
 import { IoIosResize } from 'react-icons/io';
 import {
   LineChart,
@@ -61,12 +62,18 @@ const DashboardChart = ({
         isFullscreen ? 'fixed top-0 w-full h-full left-0 z-50' : 'relative'
       }`}
     >
-      {expansive && (
-        <IoIosResize
-          className="text-secondary-text text-2xl absolute right-2 top-2 cursor-pointer"
-          onClick={() => setIsFullscreen(!isFullscreen)}
-        />
-      )}
+      {expansive &&
+        (isFullscreen ? (
+          <FiMinimize2
+            className="text-secondary-text text-2xl absolute right-2 top-2 cursor-pointer"
+            onClick={() => setIsFullscreen(false)}
+          />
+        ) : (
+          <IoIosResize
+            className="text-secondary-text text-2xl absolute right-2 top-2 cursor-pointer"
+            onClick={() => setIsFullscreen(true)}
+          />
+        ))}
       <div className="flex justify-between pl-10 mb-8">
         <div className="flex flex-col">
           <span className="text-primary-text text-3xl font-semibold">
