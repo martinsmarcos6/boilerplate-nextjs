@@ -12,7 +12,7 @@ import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
 import { destroyCookie, parseCookies, setCookie } from 'nookies';
 
-import { pdaJobsApi } from '../config/api';
+import { traadApi } from '../config/api';
 import { ILoginPayload } from '../services/contracts/user';
 import { UserService } from '../services/user-services';
 
@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }: AuthContextProvider) => {
       profile,
     });
 
-    pdaJobsApi.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+    traadApi.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
     router.push(
       `/${profile === UserProfileEnum.COMPANY ? 'company' : 'student'}/home`

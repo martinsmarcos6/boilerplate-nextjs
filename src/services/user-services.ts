@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import { pdaJobsApi } from '../config/api';
+import { traadApi } from '../config/api';
 import {
   ILoginPayload,
   ILoginResponse,
@@ -11,7 +11,7 @@ export class UserService {
   apiToken = process.env.NEXT_PUBLIC_API_TOKEN;
 
   async register(data: any): Promise<AxiosResponse<any, any>> {
-    const response = await pdaJobsApi.request({
+    const response = await traadApi.request({
       method: 'POST',
       url: `/user/register`,
       data,
@@ -23,7 +23,7 @@ export class UserService {
   async login(
     data: ILoginPayload
   ): Promise<AxiosResponse<ILoginResponse, any>> {
-    const response = await pdaJobsApi.request<ILoginResponse>({
+    const response = await traadApi.request<ILoginResponse>({
       method: 'POST',
       url: `/user/login`,
       data,
@@ -35,7 +35,7 @@ export class UserService {
   async validateToken(
     token: string
   ): Promise<AxiosResponse<IValidateTokenResponse, any>> {
-    const response = await pdaJobsApi.request<IValidateTokenResponse>({
+    const response = await traadApi.request<IValidateTokenResponse>({
       method: 'POST',
       url: `/user/me`,
       data: {
