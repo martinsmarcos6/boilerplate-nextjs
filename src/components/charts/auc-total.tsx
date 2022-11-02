@@ -114,6 +114,7 @@ const DashboardChart = ({
               axisLine={false}
               tickLine={false}
               ticks={itemsX.splice(1)}
+              stroke="#5E727A"
             />
             <YAxis yAxisId="1" hide />
             <YAxis yAxisId="2" hide />
