@@ -65,7 +65,7 @@ const DashboardChart = ({
   return (
     <div
       className={`bg-neutral h-max rounded-md py-7 pr-10 flex flex-col transition-all duration-300 ${
-        isFullscreen ? 'fixed top-0 w-full h-full left-0 z-50' : 'relative'
+        isFullscreen ? 'fixed top-0 w-full h-screen left-0 z-50' : 'relative'
       }`}
     >
       {expansive &&
