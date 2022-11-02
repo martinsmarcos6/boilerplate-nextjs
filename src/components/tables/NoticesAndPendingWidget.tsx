@@ -3,7 +3,13 @@ import React from 'react';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
 import { RiArrowDownSFill } from 'react-icons/ri';
 
-const NoticesAndPendingWidget = () => {
+import { NoticesAndPendingWidgetResponse } from '../../services/contracts/tables';
+
+interface NoticesAndPendingWidgetProps {
+  data: NoticesAndPendingWidgetResponse;
+}
+
+const NoticesAndPendingWidget = ({ data }: NoticesAndPendingWidgetProps) => {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -16,14 +22,7 @@ const NoticesAndPendingWidget = () => {
         </div>
       </div>
       <div className="">
-        {[
-          'saldo em conta corrente',
-          'pendências de pagamento',
-          'pendências de dados para o MOP',
-          'suitability desatualizado',
-          'cadastros desatualizados',
-          'saldo em conta corrente',
-        ].map((item, index) => (
+        {data.notifications.map((item, index) => (
           <div
             className="flex items-center border-y-[1px] border-y-neutral py-5 justify-between"
             key={index}
@@ -31,8 +30,8 @@ const NoticesAndPendingWidget = () => {
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-full bg-neutral" />
               <span className="text-primary-text font-semibold">
-                {1 + Math.floor(Math.random() * 10)} clientes com{' '}
-                <span className="text-primary">{item}</span>
+                {item.value} clientes com{' '}
+                <span className="text-primary">{item.description}</span>
               </span>
             </div>
             <MdOutlineArrowRightAlt className="text-secondary-text text-2xl cursor-pointer" />

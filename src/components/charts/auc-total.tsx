@@ -16,14 +16,18 @@ import {
   NameType,
 } from 'recharts/src/component/DefaultTooltipContent';
 
+import { ChartData } from '../../interfaces/chart';
+
+interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
+  y1Name?: string;
+  y2Name: string;
+}
+
 const CustomizedDot = () => {
   return null;
 };
 
-const CustomToolTip = ({
-  active,
-  payload,
-}: TooltipProps<ValueType, NameType>) => {
+const CustomToolTip = ({ active, payload, y2Name }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white text-xs font-semibold flex flex-col py-1 px-2">
@@ -33,7 +37,9 @@ const CustomToolTip = ({
             style: 'currency',
           })}
         </span>
-        <span className="text-primary">{payload[0].value} clientes</span>
+        <span className="text-primary">
+          {payload[0].value} {y2Name}
+        </span>
       </div>
     );
   }
@@ -41,7 +47,7 @@ const CustomToolTip = ({
 };
 
 interface ChartProps {
-  data: any[];
+  data: ChartData;
   leftName: string;
   rightName: string;
   expansive?: boolean;
@@ -55,7 +61,7 @@ const DashboardChart = ({
 }: ChartProps) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const itemsX: any = [];
-  data.map((item) => itemsX.push(item.name));
+  data.map((item) => itemsX.push(item.x));
   return (
     <div
       className={`bg-neutral h-max rounded-md py-7 pr-10 flex flex-col transition-all duration-300 ${
@@ -77,7 +83,7 @@ const DashboardChart = ({
       <div className="flex justify-between pl-10 mb-8">
         <div className="flex flex-col">
           <span className="text-primary-text text-3xl font-semibold">
-            {data[data.length - 1].auc.toLocaleString('pt-BR', {
+            {data[data.length - 1].y1.toLocaleString('pt-BR', {
               currency: 'BRL',
               style: 'currency',
             })}
@@ -88,7 +94,7 @@ const DashboardChart = ({
         </div>
         <div className="flex flex-col items-end">
           <span className="text-primary text-3xl font-semibold">
-            {data[data.length - 1].clientes}
+            {data[data.length - 1].y2}
           </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
             {rightName}
@@ -104,15 +110,15 @@ const DashboardChart = ({
             margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
           >
             <XAxis
-              dataKey="name"
+              dataKey="x"
               axisLine={false}
               tickLine={false}
               ticks={itemsX.splice(1)}
             />
-            <YAxis yAxisId="auac" hide />
-            <YAxis yAxisId="clients" hide />
+            <YAxis yAxisId="1" hide />
+            <YAxis yAxisId="2" hide />
             <Tooltip
-              content={<CustomToolTip />}
+              content={<CustomToolTip y1Name={leftName} y2Name={rightName} />}
               cursor={{
                 strokeWidth: 1,
                 stroke: '#E5E5E5',
@@ -120,18 +126,18 @@ const DashboardChart = ({
               }}
             />
             <Line
-              yAxisId="clients"
+              yAxisId="2"
               type="linear"
-              dataKey="clientes"
+              dataKey="y2"
               stroke="#D2A877"
               strokeWidth={2}
               dot={<CustomizedDot />}
               activeDot={{ r: 4, strokeWidth: 0 }}
             />
             <Line
-              yAxisId="auac"
+              yAxisId="1"
               type="linear"
-              dataKey="auc"
+              dataKey="y1"
               stroke="#ffffff"
               strokeWidth={2}
               dot={<CustomizedDot />}

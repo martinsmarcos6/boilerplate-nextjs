@@ -19,4 +19,4 @@ export const setupApiClient = (
   return api;
 };
 
-export const pdaJobsApi = setupApiClient();
+export const traadApi = setupApiClient();
