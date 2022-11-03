@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import DashboardChart from '../components/charts/auc-total';
 import { LoadingSpinner } from '../components/LoadingSpinner';
-import CustomersOverview from '../components/tables/CustomersOverview';
+import CustomersOverview, {
+  ICustomerOverview,
+} from '../components/tables/CustomersOverview';
 import NoticesAndPendingWidget from '../components/tables/NoticesAndPendingWidget';
 import { withSSRGuest } from '../guards/withSSRGuest';
 import ModuleWrapper from '../layouts/ModuleWrapper';
@@ -19,6 +21,8 @@ const Index = () => {
   const [notifications, setNotifications] =
     useState<NoticesAndPendingWidgetResponse>();
   const [avgIncomeData, setAvgIncomeData] = useState<ChartResponse>();
+  const [customerOverviewData, setCustomerOverviewData] =
+    useState<ICustomerOverview>();
 
   const loadChartAuc = async () => {
     try {
@@ -51,7 +55,17 @@ const Index = () => {
     }
   };
 
+  const loadCustomerOverviewData = async () => {
+    try {
+      const response = await tableServices.loadCustomerOverviewData();
+      setCustomerOverviewData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const loadTables = async () => {
+    await loadCustomerOverviewData();
     await loadNoticesAndPendingWidgetData();
   };
 
@@ -96,7 +110,17 @@ const Index = () => {
               <LoadingSpinner />
             </div>
           )}
-          <CustomersOverview />
+          {customerOverviewData ? (
+            <CustomersOverview
+              columns={customerOverviewData?.columns}
+              data={customerOverviewData?.data}
+            />
+          ) : (
+            <div className="flex items-center justify-center py-28">
+              <LoadingSpinner />
+            </div>
+          )}
+
           {notifications ? (
             <NoticesAndPendingWidget data={notifications} />
           ) : (
