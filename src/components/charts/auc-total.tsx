@@ -51,6 +51,7 @@ interface ChartProps {
   leftName: string;
   rightName: string;
   expansive?: boolean;
+  showMainValue?: boolean;
 }
 
 const DashboardChart = ({
@@ -58,6 +59,7 @@ const DashboardChart = ({
   leftName,
   rightName,
   expansive = false,
+  showMainValue = true,
 }: ChartProps) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const itemsX: any = [];
@@ -83,10 +85,11 @@ const DashboardChart = ({
       <div className="flex justify-between pl-10 mb-8">
         <div className="flex flex-col">
           <span className="text-primary-text text-3xl font-semibold">
-            {data[data.length - 1].y1.toLocaleString('pt-BR', {
-              currency: 'BRL',
-              style: 'currency',
-            })}
+            {showMainValue &&
+              data[data.length - 1].y1.toLocaleString('pt-BR', {
+                currency: 'BRL',
+                style: 'currency',
+              })}
           </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
             {leftName}
@@ -94,7 +97,7 @@ const DashboardChart = ({
         </div>
         <div className="flex flex-col items-end">
           <span className="text-primary text-3xl font-semibold">
-            {data[data.length - 1].y2}
+            {showMainValue && data[data.length - 1].y2}
           </span>
           <span className="text-secondary-text font-[raleway] font-semibold text-sm">
             {rightName}
