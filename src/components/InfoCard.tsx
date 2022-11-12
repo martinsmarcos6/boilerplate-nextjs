@@ -45,7 +45,7 @@ export const InfoCard = ({
         >
           <span className="text-sm font-normal font-montserrat">{`${
             fluctuation >= 0 ? '+ ' : '- '
-          }${fluctuation}%`}</span>
+          }${Math.abs(fluctuation)}%`}</span>
         </div>
       )}
     </div>

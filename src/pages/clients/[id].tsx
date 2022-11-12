@@ -37,7 +37,11 @@ const ClientDetailsPage = () => {
         </div>
         <section className="flex justify-between">
           <InfoCard title="Saldo Total" value={500000} />
-          <InfoCard title="Rendimento Total" value={123000} />
+          <InfoCard
+            title="Rendimento Total"
+            value={123000}
+            fluctuation={-27.2}
+          />
           <InfoCard title="Rendimento Mês" value={300200} fluctuation={24.6} />
           <InfoCard
             title="Saldo Total"
