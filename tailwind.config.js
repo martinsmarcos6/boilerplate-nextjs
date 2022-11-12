@@ -14,6 +14,11 @@ module.exports = {
       '5xl': '3rem',
       '6xl': '4rem',
     },
+    fontFamily: {
+      raleway: 'Raleway',
+      sans: 'Open Sans',
+      montserrat: 'Montserrat',
+    },
     extend: {
       colors: {
         primary: '#D2A877',
