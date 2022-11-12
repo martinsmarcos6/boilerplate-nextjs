@@ -29,6 +29,8 @@ module.exports = {
         neutral: '#022F43',
         success: '#04A0A0',
         error: '#A32655',
+        'neutral-light': '#14455A',
+        'primary-light': '#C9995B',
       },
     },
   },
