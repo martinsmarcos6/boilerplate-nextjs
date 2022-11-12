@@ -9,11 +9,14 @@ interface BreadcrumbProps {
     title: string;
     href: string;
   }[];
+  className?: string;
 }
 
-export const Breadcrumb = ({ items }: BreadcrumbProps) => {
+export const Breadcrumb = ({ items, className }: BreadcrumbProps) => {
   return (
-    <div className="flex items-center h-max gap-3 text-secondary-text">
+    <div
+      className={`flex items-center h-max gap-3 text-secondary-text ${className}`}
+    >
       <BsArrowLeftCircle className="text-xl cursor-pointer" />
       {items.map((item, idx) => (
         <div key={item.href} className="flex items-center gap-2">

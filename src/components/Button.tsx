@@ -4,12 +4,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   variant?: 'solid' | 'outlined';
   loading?: boolean;
+  className?: string;
 }
 
 export const Button = ({
   children,
   variant = 'solid',
   loading = false,
+  className,
   ...rest
 }: ButtonProps) => {
   const styles = {
@@ -21,7 +23,10 @@ export const Button = ({
   const styleArr = [styles[variant], styles.loading];
 
   return (
-    <button className={`btn ${styleArr.join(' ')}`} {...rest}>
+    <button
+      className={`btn ${styleArr.join(' ')} normal-case ${className}`}
+      {...rest}
+    >
       {children}
     </button>
   );

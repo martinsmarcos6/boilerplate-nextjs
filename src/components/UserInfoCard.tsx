@@ -35,7 +35,7 @@ export const UserInfoCard = ({
     },
   };
   return (
-    <div className="flex gap-2 items-center h-max">
+    <div className="flex gap-4 items-center h-max">
       <UserAvatar avatarUrl={avatarUrl} />
       <div className="flex flex-col text-primary-text">
         <span className={styles[size].abbr}>{abbreviatedName}</span>
