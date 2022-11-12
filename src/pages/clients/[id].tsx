@@ -49,10 +49,7 @@ const ClientDetailsPage = () => {
     <ModuleWrapper>
       <main className="w-full pb-20">
         <Breadcrumb
-          items={[
-            { title: 'Clientes', href: '/clients' },
-            { title: 'Detalhes', href: '/clients/1' },
-          ]}
+          items={[{ title: 'Clientes', href: '/clients' }]}
           className="mb-4"
         />
         <div className="flex justify-between items-end mb-5">
