@@ -14,14 +14,21 @@ const SideMenu = () => {
     setSelectedMenuItem(path);
   };
 
-  const loadMenuItemStyle = (path: string) =>
-    `${selectedMenuItem === path ? 'text-primary' : 'text-secondary-text'}`;
-
+  const loadMenuItemStyle = (path: string, exact?: boolean) => {
+    if (exact) {
+      return `${
+        selectedMenuItem === path ? 'text-primary' : 'text-secondary-text'
+      }`;
+    }
+    return `${
+      selectedMenuItem.includes(path) ? 'text-primary' : 'text-secondary-text'
+    }`;
+  };
   return (
     <aside className="max-w-max">
       <ul className="flex flex-col gap-10">
         <li
-          className={`${loadMenuItemStyle('/')} cursor-pointer`}
+          className={`${loadMenuItemStyle('/', true)} cursor-pointer`}
           onClick={() => {
             navigateTo('/');
           }}
