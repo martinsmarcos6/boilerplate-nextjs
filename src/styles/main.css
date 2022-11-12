@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+input:checked + div {
+  @apply border-transparent bg-primary;
+}
+input:checked + div svg {
+  @apply block;
+}
+
 @layer base {
   html {
     font-family: 'Montserrat', sans-serif;

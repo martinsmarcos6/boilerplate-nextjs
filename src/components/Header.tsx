@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Logo } from '../assets';
 import NotificationBadge from './NotificationBadge';
-import { TextInput } from './TextInput';
+import { SearchBar } from './SearchBar';
 import UserDropdown from './UserDropdown';
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
     <header className="flex items-center h-40 justify-between">
       <Logo />
       <div className="flex gap-5 items-center">
-        <TextInput placeholder="Encontre um cliente ou indicador" />
+        <SearchBar placeholder="Encontre um cliente ou indicador" />
         <NotificationBadge />
         <UserDropdown />
       </div>
