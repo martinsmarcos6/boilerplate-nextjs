@@ -16,7 +16,7 @@ const UserDropdown = () => {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content px-5 py-2 shadow bg-neutral w-32 mt-5 text-sm whitespace-nowrap flex flex-col gap-3 text-tertiary-text items-end"
+        className="dropdown-content px-5 py-2 shadow bg-neutral w-32 mt-5 text-sm whitespace-nowrap flex flex-col gap-3 text-tertiary-text items-end rounded-[5px]"
       >
         <li className="cursor-pointer">
           <a>Meus dados</a>

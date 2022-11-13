@@ -70,8 +70,8 @@ const ClientDetailsPage = () => {
               </span>
             </div>
           </div>
-          <section className="grid grid-cols-2 grid-rows-1 gap-5">
-            <div className="flex justify-between mb-5">
+          <section className="grid grid-cols-2 grid-rows-1 gap-5 mb-5">
+            <div className="flex gap-5 justify-between">
               <InfoCard title="Saldo Total" value={500000} />
               <InfoCard
                 title="Rendimento Total"

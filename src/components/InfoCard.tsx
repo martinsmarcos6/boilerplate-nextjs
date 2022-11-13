@@ -29,7 +29,7 @@ export const InfoCard = ({
   };
   return (
     <div
-      className={`w-64 h-44 rounded-[5px] flex flex-col py-7 pl-7 pr-5 ${color[theme].container}`}
+      className={`w-full h-44 rounded-[5px] flex flex-col py-7 pl-7 pr-5 ${color[theme].container}`}
     >
       <span
         className={`mb-2 font-raleway font-semibold text-sm ${color[theme].title}`}
