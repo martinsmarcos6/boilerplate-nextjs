@@ -15,7 +15,6 @@ interface BreadcrumbProps {
 
 export const Breadcrumb = ({ items, className }: BreadcrumbProps) => {
   const router = useRouter();
-  console.log(items);
   const returnToPreviousPage = () => {
     router.push(
       items[items.length > 1 ? items.length - 2 : items.length - 1].href
