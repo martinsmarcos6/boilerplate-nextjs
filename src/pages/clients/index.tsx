@@ -65,14 +65,16 @@ const UserCard = () => {
         </span>
         <span>{currencyFormatter(553977989)}</span>
         <span>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <RiArrowUpSFill />
             24,60%
           </div>
         </span>
-        <span className="text-primary">{currencyFormatter(2077.42)}</span>
-        <span className="text-primary text-center pr-9">0,45%</span>
-        <span className="text-primary text-center pr-9">5</span>
+        <span className="text-primary text-center">
+          {currencyFormatter(2077.42)}
+        </span>
+        <span className="text-primary text-center">0,45%</span>
+        <span className="text-primary text-center">5</span>
       </div>
       <div className="w-8 h-8 bg-secondary-text rounded-full cursor-pointer flex items-center justify-center">
         <GoArrowRight
@@ -95,10 +97,10 @@ const ClientsPage = () => {
               <div className="text-secondary-text w-full grid grid-cols-6 font-semibold items-center font-raleway text-sm gap-2">
                 <span>Cliente</span>
                 <span>Saldo Total</span>
-                <span>Rendimento %</span>
-                <span>Receita Mês</span>
-                <span>Taxa Consultoria</span>
-                <span>Avisos e Pendências</span>
+                <span className="text-center">Rendimento %</span>
+                <span className="text-center">Receita Mês</span>
+                <span className="text-center">Taxa Consultoria</span>
+                <span className="text-center">Avisos e Pendências</span>
               </div>
               <span className="w-8" />
             </div>
