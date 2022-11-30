@@ -58,7 +58,7 @@ const UserCard = () => {
       <div className="text-primary-text font-montserrat text-sm font-normal w-full rounded-md grid grid-cols-6 h-20 items-center gap-2">
         <span className="rounded-l-md">
           <UserInfoCard
-            user={{ name: 'Rafael' }}
+            user={{ name: 'Rafael Cavalcante' }}
             size="sm"
             accentColor="dark"
           />
