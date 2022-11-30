@@ -8,12 +8,14 @@ interface UserInfoCardProps {
   };
   avatarUrl?: string;
   size?: 'sm' | 'md' | 'lg';
+  accentColor?: 'dark' | 'neutral';
 }
 
 export const UserInfoCard = ({
   user: { name },
   avatarUrl,
   size = 'md',
+  accentColor = 'neutral',
 }: UserInfoCardProps) => {
   const nameArr = name.split(' ');
   const userName = `${nameArr[0]}${` ${nameArr[nameArr.length - 1] ?? ''}`}`;
@@ -36,7 +38,7 @@ export const UserInfoCard = ({
   };
   return (
     <div className="flex gap-4 items-center h-max">
-      <UserAvatar avatarUrl={avatarUrl} />
+      <UserAvatar avatarUrl={avatarUrl} accentColor={accentColor} />
       <div className="flex flex-col text-primary-text">
         <span className={styles[size].abbr}>{abbreviatedName}</span>
         <span className={styles[size].name}>{userName}</span>
