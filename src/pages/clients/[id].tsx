@@ -47,7 +47,7 @@ const ClientDetailsPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="relative">
       <ModuleWrapper>
         <main className="w-full pb-20">
           <Breadcrumb
@@ -116,7 +116,7 @@ const ClientDetailsPage = () => {
         </main>
       </ModuleWrapper>
       <Footer />
-    </>
+    </div>
   );
 };
 
