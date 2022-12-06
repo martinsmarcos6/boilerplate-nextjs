@@ -63,7 +63,7 @@ const UserCard = () => {
             accentColor="dark"
           />
         </span>
-        <span>{currencyFormatter(553977989)}</span>
+        <span className="text-center">{currencyFormatter(553977989)}</span>
         <span>
           <div className="flex items-center justify-center gap-2">
             <RiArrowUpSFill />
@@ -96,7 +96,7 @@ const ClientsPage = () => {
             <div className="flex items-center px-8">
               <div className="text-secondary-text w-full grid grid-cols-6 font-semibold items-center font-raleway text-sm gap-2">
                 <span>Cliente</span>
-                <span>Saldo Total</span>
+                <span className="text-center">Saldo Total</span>
                 <span className="text-center">Rendimento %</span>
                 <span className="text-center">Receita Mês</span>
                 <span className="text-center">Taxa Consultoria</span>

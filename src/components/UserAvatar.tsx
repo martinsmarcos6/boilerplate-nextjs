@@ -15,7 +15,7 @@ export const UserAvatar = ({
     <div
       className={`w-12 h-12 ${
         accentColor === 'dark' ? 'bg-base-bg' : 'bg-neutral'
-      } rounded-full flex items-center justify-center relative overflow-hidden`}
+      } rounded-full flex items-center justify-center relative overflow-hidden flex-shrink-0`}
     >
       {!avatarUrl ? (
         <>
