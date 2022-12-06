@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Link from 'next/link';
+
 import { Logo } from '../assets';
 import NotificationBadge from './NotificationBadge';
 import { SearchBar } from './SearchBar';
@@ -26,7 +28,9 @@ const Header = ({ setHeaderActiveBlur }: HeaderProps) => {
 
   return (
     <header className="flex items-center h-40 justify-between">
-      <Logo />
+      <Link href="/" passHref>
+        <Logo className="cursor-pointer" />
+      </Link>
       <div className="flex gap-5 items-center">
         <SearchBar
           placeholder="Encontre um cliente ou indicador"
