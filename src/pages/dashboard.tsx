@@ -6,7 +6,6 @@ import DashboardChart from '../components/charts/auc-total';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import CustomersOverview from '../components/tables/CustomersOverview';
 import NoticesAndPendingWidget from '../components/tables/NoticesAndPendingWidget';
-import { withSSRGuest } from '../guards/withSSRGuest';
 import ModuleWrapper from '../layouts/ModuleWrapper';
 import { ChartServices } from '../services';
 import { TableServices } from '../services/table-services';
@@ -76,9 +75,3 @@ const Index = () => {
 };
 
 export default Index;
-
-export const getServerSideProps = withSSRGuest(async () => {
-  return {
-    props: {},
-  };
-});

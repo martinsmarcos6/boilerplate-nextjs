@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }: AuthContextProvider) => {
   const router = useRouter();
 
   useEffect(() => {
-    const { 'pdajobs.token': token } = parseCookies();
+    const { 'traad.token': token } = parseCookies();
 
     if (token) {
       new UserService()
@@ -58,14 +58,14 @@ export const AuthProvider = ({ children }: AuthContextProvider) => {
           setUser({ id, profile, username });
         })
         .catch(() => {
-          destroyCookie(undefined, 'pdajobs.token');
+          destroyCookie(undefined, 'traad.token');
           router.push('/login');
         });
     }
   }, [router]);
 
   const signOut = () => {
-    destroyCookie(undefined, 'pdajobs.token');
+    destroyCookie(undefined, 'traad.token');
     setUser(undefined);
     router.push('/login');
   };
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }: AuthContextProvider) => {
     const { accessToken } = response.data;
     const { profile, id } = jwtDecode<User>(accessToken);
 
-    setCookie(undefined, 'pdajobs.token', accessToken, {
+    setCookie(undefined, 'traad.token', accessToken, {
       maxAge: 60 * 60 * 24 * 30, // 30 days,
       path: '/',
     });

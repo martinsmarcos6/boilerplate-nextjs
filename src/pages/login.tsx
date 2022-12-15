@@ -2,6 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { setCookie } from 'nookies';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 
@@ -19,8 +20,12 @@ const LoginPage = () => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
 
-  const { isLoading, mutate } = useMutation(login, {
-    onSuccess: () => {
+  const { isLoading, mutate, isError } = useMutation(login, {
+    onSuccess: (data) => {
+      setCookie(undefined, 'traad.token', JSON.stringify(data.data), {
+        maxAge: 60 * 60 * 24 * 30, // 30 days,
+        path: '/',
+      });
       router.push('/dashboard');
     },
   });
@@ -36,12 +41,18 @@ const LoginPage = () => {
         className="flex flex-col gap-4 max-w-[500px] mx-auto"
         onSubmit={handleSubmit(handleLogin)}
       >
-        <TextInput placeholder="Login" {...register('email')} />
+        <TextInput placeholder="Login" error={isError} {...register('email')} />
         <TextInput
           placeholder="Senha"
           type="password"
+          error={isError}
           {...register('password')}
         />
+        {isError && (
+          <div className="text-center text-red-500 bg-red-100 p-4 rounded-md">
+            Usuário ou senha inválidos
+          </div>
+        )}
         <div className="flex justify-between items-center">
           <div className="text-primary-text flex gap-2 items-center">
             <Checkbox label="Lembre-me" />
