@@ -1,9 +1,11 @@
 import * as yup from 'yup';
 
+import { InputFeedbackMessages } from '../feedback-messages';
+
 export const loginValidationSchema = yup.object().shape({
   email: yup
     .string()
-    .email('Digite um e-mail válido')
-    .required('Campo obrigatório'),
-  password: yup.string().required('Campo obrigatório'),
+    .email(InputFeedbackMessages.INVALID_EMAIL)
+    .required(InputFeedbackMessages.REQUIRED_FIELD),
+  password: yup.string().required(InputFeedbackMessages.REQUIRED_FIELD),
 });
