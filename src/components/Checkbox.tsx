@@ -6,14 +6,15 @@ import React, {
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  className?: string;
 }
 
 const CheckboxBase: ForwardRefRenderFunction<
   HTMLInputElement,
   CheckboxProps
-> = ({ label, ...rest }: CheckboxProps, ref) => {
+> = ({ label, className, ...rest }: CheckboxProps, ref) => {
   return (
-    <div className="flex items-center mr-4 mb-2">
+    <div className={`${className} flex items-center`}>
       <input
         type="checkbox"
         id="A3-yes"

@@ -15,7 +15,7 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   const styles = {
-    solid: 'bg-primary text-primary-text hover:bg-primary',
+    solid: 'bg-primary text-primary-text hover:bg-primary border-none',
     outlined: 'bg-transparent border-primary text-primary',
     loading: `${loading && 'loading'}`,
   };

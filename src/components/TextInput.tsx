@@ -8,13 +8,20 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
   variant?: 'outlined' | 'filled';
   label?: string;
+  className?: string;
 }
 
 const TextInputBase: ForwardRefRenderFunction<
   HTMLInputElement,
   TextInputProps
 > = (
-  { error = false, variant = 'filled', label, ...rest }: TextInputProps,
+  {
+    error = false,
+    variant = 'filled',
+    label,
+    className,
+    ...rest
+  }: TextInputProps,
   ref
 ) => {
   const errorStyle = error && 'border-red-500';
@@ -24,12 +31,12 @@ const TextInputBase: ForwardRefRenderFunction<
   };
 
   return (
-    <div className="relative flex items-center">
+    <div className={`${className} relative flex items-center`}>
       <div className="w-full max-w-[630px]">
         {label && (
           <label
             htmlFor={rest.id}
-            className="text-base text-neutral font-raleway"
+            className="text-base text-neutral font-raleway font-semibold mb-2"
           >
             {label}
           </label>
