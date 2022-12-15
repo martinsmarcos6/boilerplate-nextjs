@@ -21,7 +21,7 @@ const LoginPage = () => {
 
   const { isLoading, mutate } = useMutation(login, {
     onSuccess: () => {
-      router.push('/');
+      router.push('/dashboard');
     },
   });
 
