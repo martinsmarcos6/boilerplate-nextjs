@@ -1,6 +1,5 @@
 import { BsCheck2Circle } from 'react-icons/bs';
 
-import { AuthFormFooter } from '../../../components/AuthFormFooter';
 import { Button } from '../../../components/Button';
 
 export const PasswordRecoverFourthStep = () => {
@@ -20,7 +19,6 @@ export const PasswordRecoverFourthStep = () => {
       <Button type="submit" className="w-full">
         Continuar
       </Button>
-      <AuthFormFooter />
     </div>
   );
 };

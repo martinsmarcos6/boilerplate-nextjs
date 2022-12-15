@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useMutation } from 'react-query';
 
-import { AuthFormFooter } from '../components/AuthFormFooter';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { TextInput } from '../components/TextInput';
@@ -88,8 +87,6 @@ const LoginPage = () => {
         <Button type="submit" className="w-full" loading={isLoading}>
           Entrar
         </Button>
-
-        <AuthFormFooter />
       </form>
     </SignUpWrapper>
   );

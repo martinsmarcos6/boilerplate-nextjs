@@ -26,13 +26,11 @@ const ForgotPasswordPage = () => {
 
   return (
     <SignUpWrapper>
-      <div className="flex flex-col">
-        <Breadcrumb
-          items={[{ title: 'Login', href: '/login' }]}
-          className="mb-24 text-neutral"
-        />
-        {steps[forgotPasswordStep]}
-      </div>
+      <Breadcrumb
+        items={[{ title: 'Login', href: '/login' }]}
+        className="mb-24 text-neutral absolute top-[36px] left-[128px]"
+      />
+      <div className="flex flex-col relative">{steps[forgotPasswordStep]}</div>
     </SignUpWrapper>
   );
 };

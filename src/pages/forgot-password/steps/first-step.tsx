@@ -1,4 +1,3 @@
-import { AuthFormFooter } from '../../../components/AuthFormFooter';
 import { Button } from '../../../components/Button';
 import { TextInput } from '../../../components/TextInput';
 
@@ -28,7 +27,6 @@ export const PasswordRecoverFirstStep = ({
       <Button type="submit" className="w-full mt-7" loading={false}>
         Entrar
       </Button>
-      <AuthFormFooter />
     </form>
   );
 };

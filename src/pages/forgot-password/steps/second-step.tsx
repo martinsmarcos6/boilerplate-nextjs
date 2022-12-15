@@ -1,4 +1,3 @@
-import { AuthFormFooter } from '../../../components/AuthFormFooter';
 import { Button } from '../../../components/Button';
 
 interface PasswordRecoverStepProps {
@@ -25,7 +24,6 @@ export const PasswordRecoverSecondStep = ({
       <Button type="submit" className="w-full mb-16" onClick={handleOpenEmail}>
         Abrir aplicativo de e-mail
       </Button>
-      <AuthFormFooter />
     </div>
   );
 };

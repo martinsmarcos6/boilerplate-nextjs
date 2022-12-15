@@ -1,4 +1,3 @@
-import { AuthFormFooter } from '../../../components/AuthFormFooter';
 import { Button } from '../../../components/Button';
 import { TextInput } from '../../../components/TextInput';
 
@@ -29,7 +28,6 @@ export const PasswordRecoverThirdStep = ({
       <Button type="submit" className="w-full mt-7" loading={false}>
         Definir senha
       </Button>
-      <AuthFormFooter />
     </form>
   );
 };
