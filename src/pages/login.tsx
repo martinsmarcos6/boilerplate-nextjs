@@ -49,7 +49,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="py-12">
+    <div className="py-12 px-3">
       <Logo className="mx-auto mb-[6rem]" />
       <form
         className="flex flex-col gap-4 max-w-[500px] mx-auto"
