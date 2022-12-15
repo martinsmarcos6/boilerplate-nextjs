@@ -1,9 +1,15 @@
 import React from 'react';
 
+import { destroyCookie } from 'nookies';
 import { BiUserCircle } from 'react-icons/bi';
 import { RiArrowDownSFill } from 'react-icons/ri';
 
 const UserDropdown = () => {
+  const handleLogout = () => {
+    destroyCookie(undefined, 'traad.token');
+    window.location.href = '/login';
+  };
+
   return (
     <div className="dropdown dropdown-end">
       <div
@@ -24,7 +30,7 @@ const UserDropdown = () => {
         <li className="cursor-pointer">
           <a>Trocar senha</a>
         </li>
-        <li className="cursor-pointer">
+        <li className="cursor-pointer" onClick={() => handleLogout()}>
           <a>Sair</a>
         </li>
       </ul>

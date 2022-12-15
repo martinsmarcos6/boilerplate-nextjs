@@ -7,7 +7,6 @@ import NextHead from 'next/head';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { AuthProvider } from '../contexts/AuthContext';
 import 'moment/locale/pt-br';
 import Container from '../layouts/Container';
 
@@ -21,9 +20,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <NextHead>
             <title>TRAAD - iTracker</title>
           </NextHead>
-          <AuthProvider>
-            <Component {...pageProps} />
-          </AuthProvider>
+          <Component {...pageProps} />
         </Container>
       </div>
       <ReactQueryDevtools initialIsOpen={false} />
