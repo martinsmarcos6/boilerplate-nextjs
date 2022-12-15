@@ -28,9 +28,9 @@ const SideMenu = () => {
     <aside className="max-w-max">
       <ul className="flex flex-col gap-10">
         <li
-          className={`${loadMenuItemStyle('/', true)} cursor-pointer`}
+          className={`${loadMenuItemStyle('/dashboard', true)} cursor-pointer`}
           onClick={() => {
-            navigateTo('/');
+            navigateTo('/dashboard');
           }}
         >
           <div className="flex flex-col gap-2 items-center">
