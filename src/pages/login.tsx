@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
+import * as yup from 'yup';
 
 import { Logo } from '../assets';
 import { Button } from '../components/Button';
@@ -16,8 +18,20 @@ const login = async ({ email, password }: any) => {
   return traadApi.post('/auth/login', { email, password });
 };
 
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Digite um e-mail válido')
+    .required('Campo obrigatório'),
+  password: yup.string().required('Campo obrigatório'),
+});
+
 const LoginPage = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
   const router = useRouter();
 
   const { isLoading, mutate, isError } = useMutation(login, {
@@ -41,13 +55,27 @@ const LoginPage = () => {
         className="flex flex-col gap-4 max-w-[500px] mx-auto"
         onSubmit={handleSubmit(handleLogin)}
       >
-        <TextInput placeholder="Login" error={isError} {...register('email')} />
+        <TextInput
+          placeholder="Login"
+          error={isError || !!errors.email}
+          {...register('email')}
+        />
+        {errors.email && (
+          <div className="text-left text-sm mt-[-16px] text-red-500">
+            {errors.email.message}
+          </div>
+        )}
         <TextInput
           placeholder="Senha"
           type="password"
-          error={isError}
+          error={isError || !!errors.password}
           {...register('password')}
         />
+        {errors.password && (
+          <div className="text-left text-sm mt-[-16px] text-red-500">
+            {errors.password.message}
+          </div>
+        )}
         {isError && (
           <div className="text-center text-red-500 bg-red-100 p-4 rounded-md">
             Usuário ou senha inválidos
