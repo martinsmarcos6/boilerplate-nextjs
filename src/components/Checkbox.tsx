@@ -7,12 +7,18 @@ import React, {
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   className?: string;
+  theme?: 'dark' | 'light';
 }
 
 const CheckboxBase: ForwardRefRenderFunction<
   HTMLInputElement,
   CheckboxProps
-> = ({ label, className, ...rest }: CheckboxProps, ref) => {
+> = ({ label, className, theme = 'light', ...rest }: CheckboxProps, ref) => {
+  const themeStyle = {
+    dark: 'border-neutral',
+    light: 'border-white',
+  };
+
   return (
     <div className={`${className} flex items-center`}>
       <input
@@ -24,7 +30,9 @@ const CheckboxBase: ForwardRefRenderFunction<
         ref={ref}
         {...rest}
       />
-      <div className="bg-transparent border-2 rounded-md border-primary-text w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary-text">
+      <div
+        className={`${themeStyle[theme]} bg-transparent border-2 rounded-md w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary-text`}
+      >
         <svg
           className="fill-current hidden w-3 h-3 text-blue-600 pointer-events-none"
           version="1.1"
