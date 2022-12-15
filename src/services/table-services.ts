@@ -10,7 +10,7 @@ export class TableServices {
   > {
     const response = await traadApi.request<NoticesAndPendingWidgetResponse>({
       method: 'GET',
-      url: `/application/table-two`,
+      url: `/v1/application/table-two`,
     });
 
     return response;
@@ -19,7 +19,7 @@ export class TableServices {
   async loadCustomerOverviewData(): Promise<AxiosResponse<ICustomerOverview>> {
     const response = await traadApi.request<ICustomerOverview>({
       method: 'GET',
-      url: '/application/table-one',
+      url: '/v1/application/table-one',
     });
 
     return response;

@@ -7,7 +7,7 @@ export class ChartServices {
   async loadChartAUCData(): Promise<AxiosResponse<ChartResponse, any>> {
     const response = await traadApi.request<ChartResponse>({
       method: 'GET',
-      url: `/application/chart-one`,
+      url: `/v1/application/chart-one`,
     });
 
     return response;
@@ -16,7 +16,7 @@ export class ChartServices {
   async loadChartAvgIncomeData(): Promise<AxiosResponse<ChartResponse, any>> {
     const response = await traadApi.request<ChartResponse>({
       method: 'GET',
-      url: `/application/chart-two`,
+      url: `/v1/application/chart-two`,
     });
 
     return response;

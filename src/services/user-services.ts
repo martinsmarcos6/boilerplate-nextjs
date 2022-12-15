@@ -13,7 +13,7 @@ export class UserService {
   async register(data: any): Promise<AxiosResponse<any, any>> {
     const response = await traadApi.request({
       method: 'POST',
-      url: `/user/register`,
+      url: `/v1/user/register`,
       data,
     });
 
@@ -25,7 +25,7 @@ export class UserService {
   ): Promise<AxiosResponse<ILoginResponse, any>> {
     const response = await traadApi.request<ILoginResponse>({
       method: 'POST',
-      url: `/user/login`,
+      url: `/v1/user/login`,
       data,
     });
 
