@@ -47,7 +47,7 @@ const LoginPage = () => {
         onSubmit={handleSubmit(handleLogin)}
         className="max-w-[408px] w-full"
       >
-        <h1 className="font-raleway font-semibold text-3xl mb-14">
+        <h1 className="font-raleway font-semibold text-3xl mb-14 text-neutral">
           Bem-vindo de volta.
         </h1>
         <TextInput
@@ -79,7 +79,7 @@ const LoginPage = () => {
               Mantenha-me conectado
             </span>
           </div>
-          <Link href="#" passHref>
+          <Link href="/forgot-password" passHref>
             <a className="text-neutral underline font-raleway text-sm font-semibold">
               Esqueci minha senha
             </a>

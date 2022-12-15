@@ -6,27 +6,28 @@ interface PasswordRecoverStepProps {
   setForgotPasswordStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const PasswordRecoverFirstStep = ({
+export const PasswordRecoverThirdStep = ({
   setForgotPasswordStep,
 }: PasswordRecoverStepProps) => {
   const handleRecoverPassword = (e: any) => {
     e.preventDefault();
-    setForgotPasswordStep(2);
+    setForgotPasswordStep(4);
   };
 
   return (
     <form className="max-w-[408px] w-full" onSubmit={handleRecoverPassword}>
       <div className="mb-9">
         <h1 className="font-raleway font-semibold text-3xl text-neutral">
-          Esqueceu sua senha?
+          Defina sua nova senha
         </h1>
         <p className="font-raleway font-medium text-sm text-secondary-text">
-          Preencha o e-mail cadastrado para redefinir sua senha.
+          Sua nova senha precisa ser diferente da senha anterior.
         </p>
       </div>
-      <TextInput variant="outlined" label="E-mail" />
+      <TextInput variant="outlined" label="E-mail" className="mb-6" />
+      <TextInput variant="outlined" label="Confirme sua senha" />
       <Button type="submit" className="w-full mt-7" loading={false}>
-        Entrar
+        Definir senha
       </Button>
       <AuthFormFooter />
     </form>
