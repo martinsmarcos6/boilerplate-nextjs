@@ -11,6 +11,7 @@ interface BreadcrumbProps {
     href: string;
   }[];
   className?: string;
+  color?: string;
 }
 
 export const Breadcrumb = ({ items, className }: BreadcrumbProps) => {
@@ -20,10 +21,9 @@ export const Breadcrumb = ({ items, className }: BreadcrumbProps) => {
       items[items.length > 1 ? items.length - 2 : items.length - 1].href
     );
   };
+
   return (
-    <div
-      className={`flex items-center h-max gap-3 text-secondary-text ${className}`}
-    >
+    <div className={`flex items-center h-max gap-3 ${className}`}>
       <BsArrowLeftCircle
         className="text-xl cursor-pointer"
         onClick={returnToPreviousPage}
@@ -32,9 +32,7 @@ export const Breadcrumb = ({ items, className }: BreadcrumbProps) => {
         <div key={item.href} className="flex items-center gap-2">
           {idx > 0 && <MdOutlineArrowRight />}
           <Link passHref href={item.href}>
-            <span className="text-secondary-text text-sm cursor-pointer">
-              {item.title}
-            </span>
+            <span className="text-sm cursor-pointer">{item.title}</span>
           </Link>
         </div>
       ))}

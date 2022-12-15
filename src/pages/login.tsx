@@ -5,11 +5,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import { useForm } from 'react-hook-form';
-import { FaWhatsapp } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useMutation } from 'react-query';
 
-import { LetsEncryptIcon } from '../assets';
+import { AuthFormFooter } from '../components/AuthFormFooter';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { TextInput } from '../components/TextInput';
@@ -90,17 +89,7 @@ const LoginPage = () => {
           Entrar
         </Button>
 
-        <div className="flex items-center justify-between mt-24">
-          <div>
-            <LetsEncryptIcon />
-          </div>
-          <div className="flex items-center gap-2 text-neutral cursor-pointer">
-            <FaWhatsapp className="text-xl" />
-            <span className="text-sm font-raleway font-medium">
-              Precisa de ajuda?
-            </span>
-          </div>
-        </div>
+        <AuthFormFooter />
       </form>
     </SignUpWrapper>
   );
