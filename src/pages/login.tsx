@@ -8,32 +8,24 @@ import { useForm } from 'react-hook-form';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useMutation } from 'react-query';
-import * as yup from 'yup';
 
 import { LetsEncryptIcon, Logo } from '../assets';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { TextInput } from '../components/TextInput';
 import { traadApi } from '../config/api';
+import { loginValidationSchema } from '../validation/schemas';
 
 const login = async ({ email, password }: any) => {
   return traadApi.post('/auth/login', { email, password });
 };
-
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Digite um e-mail válido')
-    .required('Campo obrigatório'),
-  password: yup.string().required('Campo obrigatório'),
-});
 
 const LoginPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(loginValidationSchema) });
   const router = useRouter();
 
   const { isLoading, mutate, isError } = useMutation(login, {
