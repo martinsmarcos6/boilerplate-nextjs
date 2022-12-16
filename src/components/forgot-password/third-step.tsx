@@ -1,5 +1,5 @@
 import { Button } from '../Button';
-import { TextInput } from '../TextInput';
+import { PasswordInput } from '../PasswordInput';
 
 interface PasswordRecoverStepProps {
   setForgotPasswordStep: React.Dispatch<React.SetStateAction<number>>;
@@ -23,8 +23,8 @@ export const PasswordRecoverThirdStep = ({
           Sua nova senha precisa ser diferente da senha anterior.
         </p>
       </div>
-      <TextInput variant="outlined" label="E-mail" className="mb-6" />
-      <TextInput variant="outlined" label="Confirme sua senha" />
+      <PasswordInput variant="outlined" label="Senha" className="mb-6" />
+      <PasswordInput variant="outlined" label="Confirme sua senha" />
       <Button type="submit" className="w-full mt-7" loading={false}>
         Definir senha
       </Button>

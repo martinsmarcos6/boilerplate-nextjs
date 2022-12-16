@@ -10,6 +10,7 @@ import { useMutation } from 'react-query';
 
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
+import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
 import { traadApi } from '../config/api';
 import { SignUpWrapper } from '../layouts/SignupWrapper';
@@ -56,10 +57,9 @@ const LoginPage = () => {
           error={isError || !!errors.email}
           {...register('email')}
         />
-        <TextInput
+        <PasswordInput
           variant="outlined"
           label="Senha"
-          type="password"
           error={isError || !!errors.password}
           {...register('password')}
         />
