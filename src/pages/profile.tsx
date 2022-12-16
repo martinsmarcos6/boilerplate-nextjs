@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Checkbox } from '../components/Checkbox';
+import { TextArea } from '../components/TextArea';
 import { TextInput } from '../components/TextInput';
 import ModuleWrapper from '../layouts/ModuleWrapper';
 
@@ -84,7 +85,7 @@ const ProfilePage = () => {
             <p className="text-primary-text font-montserrat text-xs mb-3">
               RESUMO PROFISSIONAL:
             </p>
-            <TextInput />
+            <TextArea placeholder="Experiências e formações" className="h-32" />
           </aside>
         </div>
       </main>
