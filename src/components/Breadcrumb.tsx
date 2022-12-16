@@ -11,7 +11,6 @@ interface BreadcrumbProps {
     href: string;
   }[];
   className?: string;
-  color?: string;
 }
 
 export const Breadcrumb = ({ items, className }: BreadcrumbProps) => {

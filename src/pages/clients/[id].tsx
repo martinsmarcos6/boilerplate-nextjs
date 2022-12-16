@@ -52,7 +52,7 @@ const ClientDetailsPage = () => {
         <main className="w-full pb-20">
           <Breadcrumb
             items={[{ title: 'Clientes', href: '/clients' }]}
-            className="mb-4"
+            className="mb-4 text-secondary-text"
           />
           <div className="flex justify-between items-end mb-5">
             <div className="flex items-end gap-24">
