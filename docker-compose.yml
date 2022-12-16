@@ -9,4 +9,4 @@ services:
     volumes:
       - ./src:/app/src
       - ./tailwind.config.js:/app/tailwind.config.js
-      - ./.env.local:/app/.env
+      - ./.env.local:/app/.env.local
