@@ -32,7 +32,7 @@ const TextInputBase: ForwardRefRenderFunction<
 
   return (
     <div className={`${className} relative flex items-center`}>
-      <div className="w-full max-w-[630px]">
+      <div className="w-full">
         {label && (
           <label
             htmlFor={rest.id}
