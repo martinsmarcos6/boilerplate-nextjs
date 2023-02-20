@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <div className="overflow-x-hidden">
         <Container>
           <NextHead>
-            <title>TRAAD - iTracker</title>
+            <title>TRAAD | Auth</title>
           </NextHead>
           <Component {...pageProps} />
         </Container>
