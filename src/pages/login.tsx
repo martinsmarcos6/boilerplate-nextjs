@@ -12,13 +12,9 @@ import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
-import { traadApi } from '../config/api';
 import { SignUpWrapper } from '../layouts/SignupWrapper';
+import { AuthService } from '../services';
 import { loginValidationSchema } from '../validation/schemas';
-
-const login = async ({ email, password }: any) => {
-  return traadApi.post('/auth/login', { email, password });
-};
 
 const LoginPage = () => {
   const {
@@ -28,7 +24,11 @@ const LoginPage = () => {
   } = useForm({ resolver: yupResolver(loginValidationSchema) });
   const router = useRouter();
 
-  const { isLoading, mutate, isError } = useMutation(login, {
+  const {
+    isLoading,
+    mutateAsync: login,
+    isError,
+  } = useMutation(new AuthService().login, {
     onSuccess: (data) => {
       setCookie(undefined, 'traad.token', JSON.stringify(data.data), {
         maxAge: 60 * 60 * 24 * 30, // 30 days,
@@ -38,8 +38,8 @@ const LoginPage = () => {
     },
   });
 
-  const handleLogin = (loginData: any) => {
-    mutate(loginData);
+  const handleLogin = async (loginData: any) => {
+    await login(loginData);
   };
   return (
     <SignUpWrapper>
