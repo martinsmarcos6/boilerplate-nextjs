@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import 'moment/locale/pt-br';
+import { AuthProvider } from '../contexts/AuthContext';
 import Container from '../layouts/Container';
 
 moment.locale('pt-br');
@@ -15,15 +16,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = React.useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="overflow-x-hidden">
-        <Container>
-          <NextHead>
-            <title>TRAAD | Auth</title>
-          </NextHead>
-          <Component {...pageProps} />
-        </Container>
-      </div>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <AuthProvider>
+        <div className="overflow-x-hidden">
+          <Container>
+            <NextHead>
+              <title>TRAAD | Auth</title>
+            </NextHead>
+            <Component {...pageProps} />
+          </Container>
+        </div>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

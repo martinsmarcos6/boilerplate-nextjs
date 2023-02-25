@@ -11,12 +11,19 @@ export const setupApiClient = (
 ) => {
   const cookies = parseCookies(ctx);
 
-  const api = axios.create({
+  const headers = {
+    Authorization: `Bearer ${cookies['traad.token']}`,
+  };
+
+  const apiSettings = {
     baseURL: variables.apiUrl,
-    headers: {
-      Authorization: `Bearer ${cookies['pdajobs.token']}`,
-    },
-  });
+  };
+
+  if (cookies['traad.token']) {
+    Object.assign(apiSettings, { headers });
+  }
+
+  const api = axios.create(apiSettings);
 
   return api;
 };

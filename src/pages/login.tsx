@@ -3,7 +3,6 @@ import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { setCookie } from 'nookies';
 import { useForm } from 'react-hook-form';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useMutation } from 'react-query';
@@ -12,8 +11,8 @@ import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
+import { useAuth } from '../contexts/AuthContext';
 import { SignUpWrapper } from '../layouts/SignupWrapper';
-import { AuthService } from '../services';
 import { loginValidationSchema } from '../validation/schemas';
 
 const LoginPage = () => {
@@ -23,18 +22,15 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginValidationSchema) });
   const router = useRouter();
+  const { signIn } = useAuth();
 
   const {
     isLoading,
     mutateAsync: login,
     isError,
-  } = useMutation(new AuthService().login, {
-    onSuccess: (data) => {
-      setCookie(undefined, 'traad.token', JSON.stringify(data.data), {
-        maxAge: 60 * 60 * 24 * 30, // 30 days,
-        path: '/',
-      });
-      router.push('/dashboard');
+  } = useMutation(signIn, {
+    onSuccess: async () => {
+      await router.push('/sso');
     },
   });
 
