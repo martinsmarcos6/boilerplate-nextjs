@@ -3,10 +3,11 @@ import React, { useEffect } from 'react';
 import { parseCookies } from 'nookies';
 
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { variables } from '../config/variables';
 import { authGuard } from '../guards/auth.guard';
 
 const modules: { [key: string]: string } = {
-  backoffice: 'http://localhost:3001/',
+  backoffice: variables.backofficeUrl,
 };
 
 const Congrats = ({ origin }: any) => {
