@@ -10,13 +10,10 @@ const modules: { [key: string]: string } = {
   backoffice: variables.backofficeUrl,
 };
 
-const Congrats = ({ origin }: any) => {
+const Congrats = () => {
   const { 'traad.token': token } = parseCookies();
 
   useEffect(() => {
-    if (origin) {
-      window.location.href = `${modules[origin]}?sso_token=${token}`;
-    }
     window.location.href = `${modules.backoffice}?sso_token=${token}`;
   }, []);
 
@@ -31,11 +28,8 @@ const Congrats = ({ origin }: any) => {
 
 export default Congrats;
 
-export const getServerSideProps = authGuard(async (ctx) => {
-  const { query } = ctx;
+export const getServerSideProps = authGuard(async () => {
   return {
-    props: {
-      origin: query.origin ?? null,
-    },
+    props: {},
   };
 });
