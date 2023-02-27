@@ -3,18 +3,17 @@ import React, { useEffect } from 'react';
 import { parseCookies } from 'nookies';
 
 import { LoadingSpinner } from '../components/LoadingSpinner';
-import { variables } from '../config/variables';
 import { authGuard } from '../guards/auth.guard';
 
-const modules: { [key: string]: string } = {
-  backoffice: variables.backofficeUrl,
-};
+// const modules: { [key: string]: string } = {
+//   backoffice: variables.backofficeUrl,
+// };
 
 const Congrats = () => {
   const { 'traad.token': token } = parseCookies();
 
   useEffect(() => {
-    window.location.href = `${modules.backoffice}?sso_token=${token}`;
+    window.location.href = `https://backoffice-traad.vercel.app/sso?sso_token=${token}`;
   }, []);
 
   return (
