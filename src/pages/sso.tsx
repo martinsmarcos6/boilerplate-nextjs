@@ -2,18 +2,30 @@ import React, { useEffect } from 'react';
 
 import { parseCookies } from 'nookies';
 
-import { useAuth } from '../contexts/AuthContext';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 import { authGuard } from '../guards/auth.guard';
 
+const modules: { [key: string]: string } = {
+  backoffice: 'http://localhost:3001/',
+};
+
 const Congrats = ({ origin }: any) => {
-  const { user } = useAuth();
   const { 'traad.token': token } = parseCookies();
+
   useEffect(() => {
-    if (!user) {
-      window.location.href = `${origin}?sso_token=${token}`;
+    if (origin) {
+      window.location.href = `${modules[origin]}?sso_token=${token}`;
     }
+    window.location.href = `${modules.backoffice}?sso_token=${token}`;
   }, []);
-  return <div className="text-3xl text-white">Loading...</div>;
+
+  return (
+    <main className="text-3xl text-white">
+      <div className="flex flex-col items-center justify-center h-screen gap-8">
+        <LoadingSpinner className="text-6xl" />
+      </div>
+    </main>
+  );
 };
 
 export default Congrats;

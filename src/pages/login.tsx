@@ -12,6 +12,7 @@ import { Checkbox } from '../components/Checkbox';
 import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
 import { useAuth } from '../contexts/AuthContext';
+import { guestGuard } from '../guards/guest.guard';
 import { SignUpWrapper } from '../layouts/SignupWrapper';
 import { loginValidationSchema } from '../validation/schemas';
 
@@ -89,3 +90,9 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+export const getServerSideProps = guestGuard(async () => {
+  return {
+    props: {},
+  };
+});
