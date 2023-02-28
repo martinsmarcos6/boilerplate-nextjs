@@ -1,7 +1,10 @@
+import { ParsedUrlQuery } from 'querystring';
+
 import {
   GetServerSideProps,
   GetServerSidePropsContext,
   GetServerSidePropsResult,
+  PreviewData,
 } from 'next';
 import { destroyCookie, parseCookies } from 'nookies';
 
@@ -14,19 +17,29 @@ const loginRedirect = {
   },
 };
 
+async function getUserFromContext(
+  context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>
+) {
+  const authService = new AuthService();
+  const token = parseCookies(context)['traad.token'];
+  if (!token) return null;
+  try {
+    const response = await authService.loadUserSSR(token);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export const authGuard = <P extends { [key: string]: any }>(
   fn: GetServerSideProps<P>
 ) => {
   return async (
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
-    const authService = new AuthService();
-    const cookies = parseCookies(ctx);
-    const { 'traad.token': token } = cookies;
-    if (!token) return loginRedirect;
-    try {
-      await authService.loadUserSSR(token);
-    } catch (error) {
+    const user = await getUserFromContext(ctx);
+    if (!user) {
       destroyCookie(ctx, 'traad.token', {
         path: '/',
       });

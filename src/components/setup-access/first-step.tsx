@@ -17,7 +17,7 @@ export const SetupPasswordFirstStep = ({
     <form className="max-w-[408px] w-full" onSubmit={handleRecoverPassword}>
       <div className="mb-9">
         <h1 className="font-raleway font-semibold text-3xl text-neutral">
-          Cadastro de senha de acesso
+          Cadastro de senha
         </h1>
         <p className="font-raleway font-medium text-sm text-secondary-text">
           Por favor, cadastre sua senha de acesso abaixo.
