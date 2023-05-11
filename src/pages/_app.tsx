@@ -37,10 +37,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <div className="overflow-x-hidden">
+          <NextHead>
+            <title>TRAAD | Auth</title>
+          </NextHead>
           <Container>
-            <NextHead>
-              <title>TRAAD | Auth</title>
-            </NextHead>
             {loading ? <AppLoading /> : <Component {...pageProps} />}
           </Container>
         </div>

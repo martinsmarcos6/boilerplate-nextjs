@@ -1,7 +1,12 @@
 import React from 'react';
 
+import { NextComponentType, NextPageContext } from 'next';
+
 interface ContainerProps {
-  children: React.ReactNode;
+  children:
+    | React.ReactNode
+    | JSX.Element
+    | NextComponentType<NextPageContext, any, any>;
 }
 
 const Container = ({ children }: ContainerProps) => {
