@@ -1,8 +1,8 @@
 import axios from 'axios';
 
+import { LoginDto } from './dto/login.dto';
 import { traadApi } from '../config/api';
 import { variables } from '../config/variables';
-import { LoginDto } from './dto/login.dto';
 
 export class AuthService {
   async login(loginDto: LoginDto): Promise<any> {
