@@ -36,7 +36,10 @@ const LoginPage = () => {
   });
 
   const handleLogin = async (loginData: any) => {
-    await login(loginData);
+    await login({
+      email: loginData.email.toLowerCase(),
+      password: loginData.password,
+    });
   };
   return (
     <SignUpWrapper>
