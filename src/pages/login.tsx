@@ -17,6 +17,7 @@ import { SignUpWrapper } from '../layouts/SignupWrapper';
 import { loginValidationSchema } from '../validation/schemas';
 
 const LoginPage = () => {
+  console.log('dev test');
   const {
     register,
     handleSubmit,
