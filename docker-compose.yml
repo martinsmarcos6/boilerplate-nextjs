@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    image: yeee-nextjs-boilerplate-dev
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - ./tailwind.config.js:/app/tailwind.config.js
+      - ./.env.local:/app/.env.local

@@ -1,0 +1,29 @@
+input:checked + div {
+  @apply border-transparent bg-primary;
+}
+input:checked + div svg {
+  @apply block;
+}
+
+@layer base {
+  html {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .scroll-div {
+    overflow-y: scroll;
+    height: 100%;
+  }
+  .scroll-div::-webkit-scrollbar {
+    display: none;
+  }
+  .horizontal-scroll-div {
+    overflow-x: scroll;
+    width: 100%;
+  }
+  .horizontal-scroll-div::-webkit-scrollbar {
+    display: none;
+  }
+}
